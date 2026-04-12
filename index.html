@@ -1,1 +1,63 @@
-<h1>Bienvenue sur le portfolio de Henri Gicquel</h1>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Henri Gicquel | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <a href="#home" id="home-btn" class="fixed-home-btn hidden">⌂</a>
+
+    <div class="snap-container" id="main-container">
+      <section id="home" class="screen palette-home">
+        <canvas id="home-particle-canvas"></canvas>
+        <div class="content-left">
+          <p class="code-text">> SYSTEM_READY</p>
+          <h1>HENRI <span class="highlight">GICQUEL</span></h1>
+          <p class="description">Ingénieur Multimédia & Développeur Fullstack.</p>
+          <nav class="launcher-stacked">
+            <a href="#experience" class="launch-btn">01. EXPÉRIENCES</a>
+            <a href="#engineering" class="launch-btn">02. INGÉNIERIE</a>
+            <a href="#multimedia" class="launch-btn">03. MULTIMÉDIA</a>
+          </nav>
+        </div>
+        <div class="photo-right">
+          <img src="Pictures/PP-Accueil.jpeg" alt="Photo Profil" />
+        </div>
+        <div class="photo-left"></div>
+      </section>
+
+      <section id="experience" class="screen palette-exp">
+        <div class="content-centered">
+          <h2>01. <span class="highlight">EXPÉRIENCES</span></h2>
+          <div class="card">
+            <h3>KLEE CONSEIL</h3>
+            <p>Développeur Fullstack. Tests k6 & Faker.js.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="engineering" class="screen palette-eng">
+        <div class="content-centered">
+          <h2>02. <span class="highlight">INGÉNIERIE</span></h2>
+          <div class="card">
+            <h3>CNAM-ENJMIN</h3>
+            <p>Ingénierie Multimédia et Informatique.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="multimedia" class="screen palette-multi">
+        <div class="content-centered">
+          <h2>03. <span class="highlight">MULTIMÉDIA</span></h2>
+          <div class="card">
+            <h3>CREATIVE_TECH</h3>
+            <p>Moteurs de jeu & Modélisation 3D Maya.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
