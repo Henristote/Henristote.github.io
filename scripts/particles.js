@@ -1,4 +1,4 @@
-class ParticleNetwork {
+export class ParticleNetwork {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
@@ -63,3 +63,5 @@ class ParticleNetwork {
     requestAnimationFrame(() => this.animate());
   }
 }
+
+export default ParticleNetwork;

@@ -1,4 +1,4 @@
-import { ParticleNetwork } from "./particles.js";
+import { ParticleNetwork } from "./scripts/particles.js";
 
 // --- LOGIQUE SCROLL TIKTOK ---
 const container = document.getElementById("main-container");

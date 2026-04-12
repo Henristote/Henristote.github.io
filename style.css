@@ -5,6 +5,18 @@
   --card: rgba(255, 255, 255, 0.05);
 }
 
+/* FONTS */
+
+@font-face {
+  font-family: GrimsAcid;
+  src: url(Fonts/GrimsAcid/GrimsAcid-8MEKD.otf) format("opentype");
+}
+
+@font-face {
+  font-family: RichPunkDemo;
+  src: url(Fonts/RichPunkDemo/RichPunkDemo-x32Km.ttf) format("opentype");
+}
+
 /* PALETTES DE 5 COULEURS PAR ÉCRAN (Background inclus) */
 .palette-home {
   --bg: #050505;
@@ -34,6 +46,16 @@
   --card: rgba(208, 0, 255, 0.05);
   --glow: rgba(208, 0, 255, 0.3);
 }
+
+.palette-video {
+  --bg: #0d0221; /* Violet très sombre */
+  --accent: #bcff00; /* Vert acide / Limon */
+  --text: #ff00ff; /* Rose Magenta */
+  --card: rgba(188, 255, 0, 0.1);
+  background: linear-gradient(135deg, #0d0221 0%, #13001a 50%, #bcff00 150%);
+}
+
+/* BODY */
 
 body {
   margin: 0;
@@ -151,6 +173,56 @@ body {
 .highlight {
   color: var(--accent);
   text-shadow: 0 0 10px var(--accent);
+}
+
+/* LAYOUT VIDEO */
+#video.screen {
+  flex-direction: column;
+  padding: 40px;
+  font-family: GrimsAcid;
+  z-index: 1;
+  letter-spacing: 0.5cap;
+}
+/* Effet de texte Acid */
+.palette-video .acid-title {
+  font-size: 3rem;
+  filter: url(#acid-distortion); /* Si tu ajoutes un filtre SVG plus tard */
+  transform: skewX(-10deg);
+}
+
+/* Grille et Cartes Low Poly */
+.low-poly-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.poly-card {
+  background: var(--card);
+  padding: 30px;
+  position: relative;
+  /* Découpe Low Poly angulaire */
+  clip-path: polygon(0 15%, 100% 0, 95% 85%, 5% 100%);
+  border: 1px solid var(--accent);
+  transition: 0.4s;
+}
+
+.poly-card:hover {
+  transform: scale(1.05) rotate(1deg);
+  background: rgba(188, 255, 0, 0.2);
+}
+
+/* Petite décoration géométrique (éclat) */
+.poly-shard {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: var(--text);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  opacity: 0.8;
 }
 
 /* BOUTONS ET CARTES */
