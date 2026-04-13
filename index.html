@@ -8,7 +8,9 @@
     <script type="module" src="script.js"></script>
   </head>
   <body>
-    <a href="#home" id="home-btn" class="fixed-home-btn hidden">⌂</a>
+    <a href="#home" id="home-btn" class="fixed-home-btn hidden">
+      <img class="svg" src="Icon/home_app.svg" alt="Home Icon" />
+    </a>
 
     <div class="snap-container" id="main-container">
       <section id="home" class="screen palette-home">
@@ -27,7 +29,6 @@
         <div class="photo-right">
           <img src="Pictures/PP-Accueil.jpeg" alt="Photo Profil" />
         </div>
-        <div class="photo-left"></div>
       </section>
 
       <section id="experience" class="screen palette-exp">
@@ -62,16 +63,34 @@
 
       <section id="video" class="screen palette-video">
         <div class="content-centered">
-          <h2 class="acid-title">04. <span class="highlight">WEB_CONTENT</span></h2>
+          <h2 class="acid-title"><span class="highlight">WEB_CONTENT</span></h2>
           <div class="low-poly-grid">
             <div class="poly-card">
-              <h3>YOUTUBE_REEL</h3>
-              <p>Montages dynamiques & Motion design.</p>
+              <a href="https://www.youtube.com/@henrigicquel3667" target="_blank" class="card-link" aria-label="Henri's YouTube Channel"></a>
+              <h3>YOUTUBE</h3>
+              <iframe
+                src="https://www.youtube.com/embed/y0lScdebTy0?si=CLhubhre8aw0su8d"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              >
+              </iframe>
+
+              <div class="click-more">Click for more</div>
               <div class="poly-shard"></div>
             </div>
+
             <div class="poly-card">
-              <h3>TWITCH_ASSETS</h3>
-              <p>Overlays & Scènes interactives.</p>
+              <a href="https://www.twitch.tv/nexhir_" target="_blank" class="card-link" aria-label="Henri's Twitch Channel"></a>
+              <h3>TWITCH</h3>
+              <div id="twitch-embed"></div>
+              <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+              <script type="text/javascript">
+                new Twitch.Player("twitch-embed", { video: "2742486531", autoplay: false });
+              </script>
+
+              <div class="click-more">Click for more</div>
               <div class="poly-shard"></div>
             </div>
           </div>
