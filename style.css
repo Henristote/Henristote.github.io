@@ -1,17 +1,40 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
 :root {
   --bg: #000000;
   --accent: #00ff00;
   --text: #ffffff;
   --card: rgba(255, 255, 255, 0.05);
+  --transition-speed: 0.8s;
+  --bezier: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Reset de base pour éviter les calculs de marges imprévus */
+* {
+  margin: 0;
+  padding: 0; /* Crucial pour que padding ne déborde pas du 100vh */
 }
 
 /* --- FONTS --- */
 @font-face {
   font-family: GrimsAcid;
   src: url(Fonts/GrimsAcid/GrimsAcid-8MEKD.otf) format("opentype");
+  font-display: swap;
 }
 
-/* --- PALETTES --- */
+/* --- BODY & GLOBAL --- */
+body {
+  margin: 0;
+  font-family: "Courier New", monospace;
+  background-color: #000;
+  overflow: hidden;
+  color: white;
+}
+
+/* ==========================================================================
+   2. PALETTES DE COULEURS (Thématisation)
+   ========================================================================== */
 .palette-home {
   --bg: #050505;
   --accent: #00ff00;
@@ -43,19 +66,14 @@
   --card: rgba(48, 16, 55, 0.9);
 }
 
-/* --- BODY & GLOBAL --- */
-body {
-  margin: 0;
-  font-family: "Courier New", monospace;
-  background-color: #000;
-  overflow: hidden;
-  color: white;
-}
+/* ==========================================================================
+   3. LAYOUT GLOBAL (TikTok Scroll)
+   ========================================================================== */
 
 .snap-container {
   width: 100vw;
   height: 100vh;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform var(--transition-speed) var(--bezier);
 }
 
 .screen {
@@ -65,11 +83,10 @@ body {
   position: relative;
   background-color: var(--bg);
   color: var(--text);
-  transition: background-color 0.8s ease;
+  transition: background-color 0.5s ease;
   z-index: 1;
 }
 
-/* --- LAYOUTS DE CONTENU --- */
 .content-centered {
   flex: 1;
   display: flex;
@@ -81,164 +98,9 @@ body {
   z-index: 10;
 }
 
-/* --- SECTION HOME --- */
-#home.screen {
-  justify-content: flex-start;
-}
-
-#home-particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to right, black 45%, transparent 55%);
-  mask-image: linear-gradient(to right, black 45%, transparent 55%);
-}
-
-.content-left {
-  position: relative;
-  z-index: 10;
-  width: 50vw;
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.photo-right {
-  flex: 1;
-  height: 100vh;
-  position: relative;
-  z-index: 5;
-}
-.photo-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.photo-right::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, var(--bg) 0%, transparent 15%);
-  z-index: 6;
-}
-
-/* --- SECTION VIDEO (ACID CORE) --- */
-#video.screen {
-  flex-direction: column;
-  padding: 0;
-  font-family: GrimsAcid;
-  letter-spacing: 0.2rem;
-  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(187, 255, 0, 0.5) 170%), url(Pictures/acid-gradient-copie-purple.png);
-  background-size: cover;
-}
-
-#video .content-centered {
-  justify-content: flex-start;
-  padding-top: 1vh;
-  padding-bottom: 4vh;
-  height: 100vh;
-  box-sizing: border-box;
-}
-
-.acid-title {
-  font-size: clamp(2rem, 6vh, 4rem);
-  margin-bottom: 0vh;
-  transform: skewX(-10deg);
-}
-
-.low-poly-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 0vh;
-  margin-right: 5vw;
-  gap: 10vw;
-  width: 90%;
-}
-
-/* --- CARTES LOW POLY (PARAMÉTRÉES) --- */
-.poly-card {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 1vh;
-  background: var(--card);
-  position: relative;
-  z-index: 1;
-  clip-path: polygon(0 10%, 100% 0, 95% 95%, 5% 100%);
-  height: 45vh;
-  width: 80vh;
-  border: 2px solid var(--accent);
-  transition: 0.4s;
-  min-height: 0;
-  overflow: hidden;
-  padding-bottom: 12vh;
-}
-
-.poly-card:hover {
-  transform: scale(1.02) rotate(1deg);
-  text-shadow: 0px 2px 1px black;
-  background: rgba(188, 255, 0, 0.15);
-}
-
-.poly-card h3 {
-  margin: 0;
-  align-self: center;
-  font-size: clamp(1rem, 2.5vh, 1.8rem);
-}
-
-.poly-card iframe,
-#twitch-embed iframe {
-  grid-row: 2;
-  place-self: center;
-  aspect-ratio: 16 / 9;
-  width: 80% !important;
-  max-height: 35vh;
-  border: 2px solid var(--accent);
-  z-index: 10;
-}
-
-.poly-shard {
-  position: absolute;
-  bottom: 1.5vh;
-  right: 2vh;
-  width: 15px;
-  height: 15px;
-  background: var(--accent);
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  opacity: 0.6;
-}
-
-.card-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.click-more {
-  position: absolute;
-  bottom: 2.5vh; /* Toujours à la même distance du bord bas de la carte */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  opacity: 0.8;
-  z-index: 6;
-  pointer-events: none;
-  width: 100%;
-  text-align: center;
-}
-
-/* --- BOUTONS & NAVIGATION --- */
+/* ==========================================================================
+   4. COMPOSANTS (Réutilisables)
+   ========================================================================== */
 .launcher-stacked {
   display: flex;
   flex-direction: column;
@@ -253,8 +115,7 @@ body {
   padding: 12px;
   text-decoration: none;
   text-align: center;
-  transition: 0.3s;
-  background-color: var(--bg);
+  transition: 0.3s ease;
 }
 .launch-btn:hover {
   background: var(--accent);
@@ -273,30 +134,165 @@ body {
   color: var(--accent);
   text-shadow: 0 0 10px var(--accent);
 }
+/* ==========================================================================
+   5. SECTION HOME
+   ========================================================================== */
 
-/* --- BOUTON HOME --- */
+#home-particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, black 40%, transparent 60%);
+  mask-image: linear-gradient(to right, black 40%, transparent 60%);
+}
+
+.content-left {
+  position: relative;
+  z-index: 10;
+  width: 50vw;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.photo-right {
+  flex: 1;
+  height: 100vh;
+  position: relative;
+}
+.photo-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 15%);
+  z-index: 6;
+}
+
+/* ==========================================================================
+   6. SECTION VIDEO (ACID CORE)
+   ========================================================================== */
+#video.screen {
+  font-family: "GrimsAcid", sans-serif;
+  letter-spacing: 0.2rem;
+  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(187, 255, 0, 0.5) 170%), url(Pictures/acid-gradient-copie-purple.png);
+  background-size: cover;
+}
+
+#video .content-centered {
+  justify-content: flex-start;
+  padding-top: 2vh;
+}
+
+.acid-title {
+  font-size: clamp(2rem, 6vh, 4rem);
+  transform: skewX(-10deg);
+  margin-bottom: -2vh;
+}
+
+.low-poly-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 0vh;
+  margin-right: 5vw;
+  gap: 10vw;
+  width: 90%;
+}
+
+/* --- CARTES LOW POLY --- */
+.poly-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 2vh;
+  padding-bottom: 12vh;
+  background: var(--card);
+  border: 2px solid var(--accent);
+  clip-path: polygon(0 10%, 100% 0, 95% 95%, 5% 100%);
+  height: 45vh;
+  width: 75vh;
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+.poly-card:hover {
+  transform: scale(1.02) rotate(1deg);
+  text-shadow: 0px 2px 1px black;
+  background: rgba(188, 255, 0, 0.15);
+}
+
+.poly-card iframe,
+#twitch-embed iframe {
+  width: 85% !important;
+  aspect-ratio: 16 / 9;
+  max-height: 35vh;
+  place-self: center;
+  z-index: 10;
+  border: 2px solid var(--accent);
+}
+
+.card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.click-more {
+  position: absolute;
+  bottom: 2vh; /* Toujours à la même distance du bord bas de la carte */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.poly-shard {
+  position: absolute;
+  bottom: 1.5vh;
+  right: 2vh;
+  width: 15px;
+  height: 15px;
+  background: var(--accent);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  opacity: 0.6;
+}
+/* ==========================================================================
+   7. INTERFACE FIXE
+   ========================================================================== */
 .fixed-home-btn {
   position: fixed;
   bottom: 3vh;
   right: 3vw;
   z-index: 1000;
-  border: 2px solid var(--accent);
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--accent);
   border-radius: 50%;
   transition: 0.4s;
 }
+
 .fixed-home-btn.hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-.svg {
+.fixed-home-btn img {
   width: 60%;
   height: 60%;
-  filter: invert(0);
+  margin-bottom: 5%;
 }
