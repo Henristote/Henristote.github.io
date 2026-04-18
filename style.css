@@ -142,13 +142,22 @@ body {
 .launcher-stacked {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5vh;
   margin-top: 30px;
-  width: 250px;
+  width: 40vh;
+}
+
+.launcher-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10vh;
+  margin-top: 30px;
+  width: 100vh;
 }
 
 .launch-btn {
   border: 1px solid var(--accent);
+  background-color: #000;
   color: var(--accent);
   padding: 12px;
   text-decoration: none;
