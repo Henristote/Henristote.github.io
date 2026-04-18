@@ -23,6 +23,35 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: RichPunkDemo;
+  src: url(Fonts/RichPunkDemo/RichPunkDemo-x32Km.ttf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: GroovyVintage;
+  src: url(Fonts/GroovyVintage/GroovyVintage-Yq5K2.ttf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: AcidDaze;
+  src: url(Fonts/AcidDaze/AcidDazeTwo-XqBa.ttf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: BrokenWing;
+  src: url(Fonts/BrokenWing/BrokenWingsRegular-G34aD.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: TieWing;
+  src: url(Fonts/Tie-Wing/TieWing-y0Ee.ttf) format("opentype");
+  font-display: swap;
+}
 /* --- BODY & GLOBAL --- */
 body {
   margin: 0;
@@ -53,17 +82,26 @@ body {
   --text: #fff4e0;
   --card: rgba(255, 179, 0, 0.05);
 }
-.palette-multi {
+.palette-game {
   --bg: #13001a;
   --accent: #d000ff;
   --text: #f8e0ff;
   --card: rgba(208, 0, 255, 0.05);
 }
+.palette-sound {
+  --bg: #ff9700;
+  --accent: #ff3800;
+  --text: #ffcd92;
+  --card: #700900(48, 16, 55, 0.9);
+}
+.palette-design {
+  --accent: #ffffff;
+}
 .palette-video {
   --bg: #0d0221;
-  --accent: rgba(187, 255, 0, 0.98);
-  --text: rgba(255, 0, 255, 0.8);
-  --card: rgba(48, 16, 55, 0.9);
+  --accent: #bbff00fa;
+  --text: #ff00ffcc;
+  --card: #301037e6;
 }
 
 /* ==========================================================================
@@ -179,6 +217,140 @@ body {
 }
 
 /* ==========================================================================
+   00. SECTION Game_Engine (FINAL WORLD KH3)
+   ========================================================================== */
+#game_engine.screen {
+  font-family: "BrokenWing", sans-serif;
+  letter-spacing: 0.2rem;
+  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(188, 188, 188, 0.5) 170%), url(Pictures/KH3_Final-World.jpg);
+  background-size: cover;
+}
+
+/* ==========================================================================
+   00. SECTION SOUND (PANTON/VINTAGE CORE)
+   ========================================================================== */
+#sound.screen {
+  font-family: "GroovyVintage", sans-serif;
+  letter-spacing: 0.2rem;
+  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgb(239, 6, 6) 170%), url(Pictures/70s_Waves.jpg);
+  background-size: cover;
+  text-shadow:
+    -2px -2px 0 #000,
+    /* Contour en noir */ 2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+/* ==========================================================================
+   00. SECTION DESIGN (CHROME CORE)
+   ========================================================================== */
+#design.screen {
+  font-family: "AcidDaze", sans-serif;
+  letter-spacing: 0.2rem;
+  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(188, 188, 188, 0.5) 170%), url(Pictures/metallic-holographic.jpg);
+  background-size: cover;
+  text-shadow:
+    -3px -3px 0 #000,
+    /* Contour en noir */ 3px -3px 0 #000,
+    -3px 3px 0 #000,
+    3px 3px 0 #000;
+}
+
+.metal-title {
+  font-size: clamp(3rem, 9vh, 6rem);
+  transform: skewX(-10deg);
+  margin-bottom: 8vh;
+}
+
+.metal-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 1vh;
+  padding-bottom: 5vh;
+
+  /* Forme arrondie */
+  border-radius: 25px;
+
+  /* Dégradé "Acier Brossé" : mélange de gris profonds et de reflets clairs */
+  background: linear-gradient(135deg, rgba(84, 87, 81, 0.626) -10%, rgba(49, 93, 103, 0.256) 50%, rgba(121, 97, 75, 0.56) 100%), url(Pictures/metallic-holographic.jpg);
+  background-size: 200%;
+  background-position: 15% 75%;
+  transform: skew(1);
+
+  /* Bordure argentée fine */
+  border: 0.3rem solid rgba(200, 200, 210, 0.3);
+
+  /* Ombre portée pour donner du relief (effet plaque posée) */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1); /* Reflet sur l'arête supérieure */
+
+  height: 50vh;
+  width: 80vh;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+}
+
+/* --- Effets de survol (Hover) --- */
+.metal-card:hover {
+  transform: translateY(-8px);
+  /* Lueur argentée au lieu du vert */
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 15px 40px rgba(255, 255, 255, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Typographie Argentée --- */
+.metal-card h3,
+.click-more {
+  margin: 0;
+  color: #000000; /* Gris très clair, presque blanc  */
+  text-shadow:
+    2px 2px 1px rgb(176, 180, 255),
+    -2px -2px 1px rgb(176, 180, 255),
+    2px -2px 1px rgb(176, 180, 255),
+    -2px 2px 1px rgb(176, 180, 255); /* Ombre légère pour faire ressortir le texte */
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+/* --- Intégration Vidéo ---  */
+.metal-card iframe {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 10;
+  width: 90% !important;
+  aspect-ratio: 16/9;
+  place-self: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+.metal-card img {
+  place-self: center;
+  border-radius: 12px;
+  width: 90%;
+}
+
+/* --- Texte "Click for more" ---  */
+.metal-card .click-more {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ==========================================================================
    6. SECTION VIDEO (ACID CORE)
    ========================================================================== */
 #video.screen {
@@ -236,8 +408,10 @@ body {
   aspect-ratio: 16 / 9;
   max-height: 35vh;
   place-self: center;
+  position: relative;
   z-index: 10;
-  border: 2px solid var(--accent);
+  pointer-events: auto;
+  border: 4px solid var(--accent);
 }
 
 .card-link {
@@ -268,7 +442,7 @@ body {
   opacity: 0.6;
 }
 /* ==========================================================================
-   7. INTERFACE FIXE
+   00. INTERFACE FIXE
    ========================================================================== */
 .fixed-home-btn {
   position: fixed;
