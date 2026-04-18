@@ -235,6 +235,12 @@ body {
   background-size: cover;
 }
 
+.poly-card img {
+  place-self: center;
+  border-radius: 12px;
+  width: 90%;
+}
+
 /* ==========================================================================
    00. SECTION SOUND (PANTON/VINTAGE CORE)
    ========================================================================== */
