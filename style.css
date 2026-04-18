@@ -313,7 +313,7 @@ body {
 
 /* --- Typographie Argentée --- */
 .metal-card h3,
-.click-more {
+.metal-card .click-more {
   margin: 0;
   color: #000000; /* Gris très clair, presque blanc  */
   text-shadow:
