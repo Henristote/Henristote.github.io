@@ -265,7 +265,6 @@ body {
   overflow: visible;
   z-index: 1;
   background: transparent; /* Le nuage fera le fond */
-  transition: 0.5s ease-in-out;
 }
 
 .cloud-card:hover {
@@ -281,7 +280,7 @@ body {
   & .click-more, /* Correction du point manquant ici */
   & iframe,
   & img {
-    opacity: 0.75 !important;
+    opacity: 0.65 !important;
     filter: saturate(0.8);
   }
 }
@@ -298,6 +297,7 @@ body {
   z-index: 0; /* Derrière tout le monde */
   filter: blur(1vw);
   pointer-events: none; /* Les clics passent à travers */
+  transition: 0.5s ease-in-out;
 }
 
 /* On s'assure que les ronds du nuage ne bougent pas non plus */
@@ -309,6 +309,7 @@ body {
   z-index: 0;
   box-sizing: border-box;
   filter: blur(1vw);
+  transition: 0.5s ease-in-out;
 }
 
 .cloud-shape::before {
@@ -341,7 +342,7 @@ body {
   color: #000; /* Texte noir pour être lisible sur le nuage blanc */
   text-shadow: none; /* On enlève l'ombre si on écrit en noir */
   margin-top: 1vh;
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .cloud-card iframe,
@@ -353,7 +354,7 @@ body {
   z-index: 10;
   border: 2px solid #ccc;
   position: relative;
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 /* 3. LE TEXTE DU BAS */
@@ -366,7 +367,7 @@ body {
   margin-top: 2vh;
   text-align: center;
   text-shadow: none;
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 /* ==========================================================================
    00. SECTION SOUND (PANTON/VINTAGE CORE)
