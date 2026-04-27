@@ -1,0 +1,97 @@
+#engineering.screen {
+  font-family: "IronForge", sans-serif;
+  background-image: linear-gradient(150deg, rgba(9, 157, 100, 0.3) 0%, rgba(106, 46, 5, 0.3) 50%, rgba(9, 157, 100, 0.3) 170%), url(../Pictures/Background/rusty-texture.jpg);
+  background-size: cover;
+  letter-spacing: 0.1rem;
+}
+
+.rusty-title {
+  font-size: clamp(4rem, 12vh, 8rem);
+  transform: skewX(-10deg);
+  margin-bottom: 10vh;
+}
+
+.rusty-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 1vh;
+  padding-bottom: 5vh;
+
+  /* Forme arrondie */
+  border-radius: 7rem;
+
+  background: radial-gradient(circle, #ff9700 25%, #ff3800 90%, #700900 95%);
+  background-position: cover;
+  transform: skew(1);
+
+  /* Bordure argentée fine */
+  border: 0.2rem solid rgba(200, 200, 210);
+
+  /* Ombre portée pour donner du relief (effet plaque posée) */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1); /* Reflet sur l'arête supérieure */
+
+  height: 50vh;
+  width: 80vh;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+}
+
+/* --- Effets de survol (Hover) --- */
+.rusty-card:hover {
+  transform: translateY(-8px);
+  /* Lueur argentée au lieu du vert */
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 15px 40px rgba(255, 255, 255, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Typographie Argentée --- */
+.rusty-card h3,
+.rusty-card .click-more {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  align-self: center;
+  text-shadow:
+    -0.1rem -0.1rem 0 #000,
+    0.1rem -0.1rem 0 #000,
+    -0.1rem 0.1rem 0 #000,
+    0.1rem 0.1rem 0 #000;
+}
+
+/* --- Intégration Vidéo ---  */
+.rusty-card iframe {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 10;
+  width: 90% !important;
+  aspect-ratio: 16/9;
+  place-self: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+.rusty-card img {
+  place-self: center;
+  border-radius: 12px;
+  width: 90%;
+}
+
+/* --- Texte "Click for more" ---  */
+.rusty-card .click-more {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 5;
+  pointer-events: none;
+}

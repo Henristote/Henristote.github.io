@@ -1,5 +1,12 @@
+@import url(./Styles/AboutMeSection.css);
+@import url(./Styles/SkillsSection.css);
+@import url(./Styles/EngineeringSection.css);
+@import url(./Styles/GameEngineSection.css);
+@import url(./Styles/SoundSection.css);
+@import url(./Styles/DesignSection.css);
+@import url(./Styles/WebContentSection.css);
 /* ==========================================================================
-   1. VARIABLES & RESET
+   VAR & RESET
    ========================================================================== */
 :root {
   --bg: #000000;
@@ -25,8 +32,8 @@
 }
 
 @font-face {
-  font-family: RichPunkDemo;
-  src: url(Fonts/RichPunkDemo/RichPunkDemo-x32Km.ttf) format("opentype");
+  font-family: IronForge;
+  src: url(Fonts/IronForge/IronForgeRegular-J94m.ttf) format("opentype");
   font-display: swap;
 }
 
@@ -39,12 +46,6 @@
 @font-face {
   font-family: AcidDaze;
   src: url(Fonts/AcidDaze/AcidDazeTwo-XqBa.ttf) format("opentype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: BrokenWing;
-  src: url(Fonts/BrokenWing/BrokenWingsRegular-G34aD.otf) format("opentype");
   font-display: swap;
 }
 
@@ -63,7 +64,7 @@ body {
 }
 
 /* ==========================================================================
-   2. PALETTES DE COULEURS (Thématisation)
+   COLOURS
    ========================================================================== */
 .palette-home {
   --bg: #050505;
@@ -106,7 +107,7 @@ body {
 }
 
 /* ==========================================================================
-   3. LAYOUT GLOBAL (TikTok Scroll)
+   GLOBAL LAYOUT
    ========================================================================== */
 
 .snap-container {
@@ -138,7 +139,7 @@ body {
 }
 
 /* ==========================================================================
-   4. COMPOSANTS (Réutilisables)
+   COMPOSANTS 
    ========================================================================== */
 .launcher-stacked {
   display: flex;
@@ -183,7 +184,7 @@ body {
   text-shadow: 0 0 10px var(--accent);
 }
 /* ==========================================================================
-   5. SECTION HOME
+   SECTION HOME
    ========================================================================== */
 
 #home-particle-canvas {
@@ -225,458 +226,8 @@ body {
   background: linear-gradient(to right, var(--bg) 0%, transparent 15%);
   z-index: 6;
 }
-
 /* ==========================================================================
-   00. SECTION Game_Engine (FINAL WORLD KH3)
-   ========================================================================== */
-#game_engine.screen {
-  font-family: "TieWing", sans-serif;
-  letter-spacing: 0.2rem;
-  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(188, 188, 188, 0.5) 170%), url(Pictures/KH3_Final-World.jpg);
-  background-size: cover;
-}
-
-.poly-card img {
-  place-self: center;
-  border-radius: 12px;
-  width: 90%;
-}
-
-.cloud-title {
-  font-size: clamp(3rem, 9vh, 6rem);
-  transform: skewX(-10deg);
-  margin-bottom: 14vh;
-  text-shadow: #333 -3px 3px 1px;
-}
-
-#game_engine.screen .grid {
-  margin-top: 0vh;
-}
-
-.cloud-card {
-  position: relative;
-  display: grid;
-  /* On définit 3 lignes : Titre, Vidéo (qui prend la place), et Texte du bas */
-  grid-template-rows: auto 1fr auto;
-  gap: 1vh;
-  padding: 4vh;
-  height: 45vh;
-  width: 75vh;
-  overflow: visible;
-  z-index: 1;
-  background: transparent; /* Le nuage fera le fond */
-}
-
-.cloud-card:hover {
-  transform: scale(1.05);
-  text-shadow: 0px 2px 1px black;
-  .cloud-shape,
-  .cloud-shape::after,
-  .cloud-shape::before {
-    background-color: rgba(255, 255, 255, 0.75);
-    filter: blur(1.5vw);
-  }
-  h3,
-  & .click-more, /* Correction du point manquant ici */
-  & iframe,
-  & img {
-    opacity: 0.65 !important;
-    filter: saturate(0.8);
-  }
-}
-/* 1. ON SORT LE NUAGE DE LA GRILLE */
-.cloud-shape {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -20%); /* Centre le nuage dans la carte */
-  width: 45vw;
-  height: 35vh;
-  background-color: white;
-  border-radius: 100px;
-  z-index: 0; /* Derrière tout le monde */
-  filter: blur(1vw);
-  pointer-events: none; /* Les clics passent à travers */
-  transition: 0.5s ease-in-out;
-}
-
-/* On s'assure que les ronds du nuage ne bougent pas non plus */
-.cloud-shape::before,
-.cloud-shape::after {
-  content: "";
-  position: absolute;
-  background-color: white;
-  z-index: 0;
-  box-sizing: border-box;
-  filter: blur(1vw);
-  transition: 0.5s ease-in-out;
-}
-
-.cloud-shape::before {
-  width: 25vw;
-  height: 40vh;
-  border-radius: 50%;
-  background-color: white;
-  top: -60%;
-  left: 5%;
-  box-shadow: 0 0 1rem white;
-  z-index: -10;
-}
-
-.cloud-shape::after {
-  width: 25vw;
-  height: 45vh;
-  border-radius: 50%;
-  background-color: white;
-  top: -75%;
-  left: 40%;
-  box-shadow: 0 0 1rem white;
-}
-
-/* 2. ON FORCE LE TITRE ET LA VIDÉO SUR LEURS LIGNES */
-.cloud-card h3 {
-  font-size: 1.75rem;
-  grid-row: 1;
-  position: relative;
-  z-index: 2; /* Devant le nuage */
-  color: #000; /* Texte noir pour être lisible sur le nuage blanc */
-  text-shadow: none; /* On enlève l'ombre si on écrit en noir */
-  margin-top: 1vh;
-  transition: 0.5s ease-in-out;
-}
-
-.cloud-card iframe,
-.cloud-card img {
-  grid-row: 2;
-  place-self: center;
-  width: 85% !important;
-  aspect-ratio: 16/9;
-  z-index: 10;
-  border: 2px solid #ccc;
-  position: relative;
-  transition: 0.5s ease-in-out;
-}
-
-/* 3. LE TEXTE DU BAS */
-.cloud-card .click-more {
-  grid-row: 3;
-  position: relative;
-  z-index: 2;
-  color: #333;
-  font-size: 1.25rem;
-  margin-top: 2vh;
-  text-align: center;
-  text-shadow: none;
-  transition: 0.5s ease-in-out;
-}
-/* ==========================================================================
-   00. SECTION SOUND (PANTON/VINTAGE CORE)
-   ========================================================================== */
-#sound.screen {
-  font-family: "GroovyVintage", sans-serif;
-  letter-spacing: 0.2rem;
-  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgb(239, 6, 6) 170%), url(Pictures/70s_Waves.jpg);
-  background-size: cover;
-  text-shadow:
-    -0.15rem -0.15rem 0 #000,
-    0.15rem -0.15rem 0 #000,
-    -0.15rem 0.15rem 0 #000,
-    0.15rem 0.15rem 0 #000;
-}
-
-.seventy-title {
-  font-size: clamp(4rem, 12vh, 8rem);
-  transform: skewX(-10deg);
-  margin-bottom: 10vh;
-}
-
-.seventy-card {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  padding: 1vh;
-  padding-bottom: 5vh;
-
-  /* Forme arrondie */
-  border-radius: 7rem;
-
-  background: radial-gradient(circle, #ff9700 25%, #ff3800 90%, #700900 95%);
-  background-position: cover;
-  transform: skew(1);
-
-  /* Bordure argentée fine */
-  border: 0.2rem solid rgba(200, 200, 210);
-
-  /* Ombre portée pour donner du relief (effet plaque posée) */
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1); /* Reflet sur l'arête supérieure */
-
-  height: 50vh;
-  width: 80vh;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 1;
-}
-
-/* --- Effets de survol (Hover) --- */
-.seventy-card:hover {
-  transform: translateY(-8px);
-  /* Lueur argentée au lieu du vert */
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow:
-    0 15px 40px rgba(255, 255, 255, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
-}
-
-/* --- Typographie Argentée --- */
-.seventy-card h3,
-.seventy-card .click-more {
-  margin: 0;
-  font-size: 1.75rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  align-self: center;
-  text-shadow:
-    -0.1rem -0.1rem 0 #000,
-    0.1rem -0.1rem 0 #000,
-    -0.1rem 0.1rem 0 #000,
-    0.1rem 0.1rem 0 #000;
-}
-
-/* --- Intégration Vidéo ---  */
-.seventy-card iframe {
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 10;
-  width: 90% !important;
-  aspect-ratio: 16/9;
-  place-self: center;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: 0.3s;
-}
-.seventy-card img {
-  place-self: center;
-  border-radius: 12px;
-  width: 90%;
-}
-
-/* --- Texte "Click for more" ---  */
-.seventy-card .click-more {
-  position: absolute;
-  bottom: 3vh;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   00. SECTION DESIGN (CHROME CORE)
-   ========================================================================== */
-#design.screen {
-  font-family: "AcidDaze", sans-serif;
-  letter-spacing: 0.4rem;
-  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(188, 188, 188, 0.5) 170%), url(Pictures/metallic-holographic.jpg);
-  background-size: cover;
-  text-shadow:
-    -3px -3px 0 #000,
-    /* Contour en noir */ 3px -3px 0 #000,
-    -3px 3px 0 #000,
-    3px 3px 0 #000;
-}
-
-.metal-title {
-  font-size: clamp(3rem, 9vh, 6rem);
-  transform: skewX(-10deg);
-  margin-bottom: 8vh;
-}
-
-.metal-card {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding: 1vh;
-  padding-bottom: 5vh;
-
-  /* Forme arrondie */
-  border-radius: 25px;
-
-  /* Dégradé "Acier Brossé" : mélange de gris profonds et de reflets clairs */
-  background: linear-gradient(135deg, rgba(84, 87, 81, 0.626) -10%, rgba(49, 93, 103, 0.256) 50%, rgba(121, 97, 75, 0.56) 100%), url(Pictures/metallic-holographic.jpg);
-  background-size: 200%;
-  background-position: 15% 75%;
-  transform: skew(1);
-
-  /* Bordure argentée fine */
-  border: 0.3rem solid rgba(200, 200, 210, 0.3);
-
-  /* Ombre portée pour donner du relief (effet plaque posée) */
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1); /* Reflet sur l'arête supérieure */
-
-  height: 50vh;
-  width: 80vh;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 1;
-}
-
-/* --- Effets de survol (Hover) --- */
-.metal-card:hover {
-  transform: translateY(-8px);
-  /* Lueur argentée au lieu du vert */
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow:
-    0 15px 40px rgba(255, 255, 255, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
-}
-
-/* --- Typographie Argentée --- */
-.metal-card h3,
-.metal-card .click-more {
-  margin: center;
-  color: #000000; /* Gris très clair, presque blanc  */
-  text-shadow:
-    0.1rem 0.1rem 1px rgb(176, 180, 255),
-    -0.1rem -0.1rem 1px rgb(176, 180, 255),
-    0.1rem -0.1rem 1px rgb(176, 180, 255),
-    -0.1rem 0.1rem 1px rgb(176, 180, 255); /* Ombre légère pour faire ressortir le texte */
-  font-size: 1.75rem;
-  text-transform: uppercase;
-  align-self: center;
-}
-
-/* --- Intégration Vidéo ---  */
-.metal-card iframe {
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 10;
-  width: 90% !important;
-  aspect-ratio: 16/9;
-  place-self: center;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: 0.3s;
-}
-.metal-card img {
-  margin-bottom: 1rem;
-  place-self: center;
-  border-radius: 12px;
-  width: 90%;
-}
-
-/* --- Texte "Click for more" ---  */
-.metal-card .click-more {
-  position: absolute;
-  bottom: 3vh;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 0.2rem;
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   6. SECTION VIDEO (ACID CORE)
-   ========================================================================== */
-#video.screen {
-  font-family: "GrimsAcid", sans-serif;
-  letter-spacing: 0.2rem;
-  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(187, 255, 0, 0.5) 170%), url(Pictures/acid-gradient-copie-purple.png);
-  background-size: cover;
-}
-
-#video .content-centered {
-  justify-content: flex-start;
-  padding-top: 2vh;
-}
-
-.acid-title {
-  font-size: clamp(2rem, 6vh, 4rem);
-  transform: skewX(-10deg);
-  margin-bottom: -2vh;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 0vh;
-  margin-right: 5vw;
-  gap: 10vw;
-  width: 90%;
-}
-
-/* --- CARTES LOW POLY --- */
-.poly-card {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  padding: 2vh;
-  padding-bottom: 12vh;
-  background: var(--card);
-  border: 2px solid var(--accent);
-  clip-path: polygon(0 10%, 100% 0, 95% 95%, 5% 100%);
-  height: 45vh;
-  width: 75vh;
-  transition: 0.4s;
-  overflow: hidden;
-}
-
-.poly-card:hover {
-  transform: scale(1.02) rotate(1deg);
-  text-shadow: 0px 2px 1px black;
-  background: rgba(188, 255, 0, 0.15);
-}
-
-.poly-card iframe,
-#twitch-embed iframe {
-  width: 85% !important;
-  aspect-ratio: 16 / 9;
-  max-height: 35vh;
-  place-self: center;
-  position: relative;
-  z-index: 10;
-  pointer-events: auto;
-  border: 4px solid var(--accent);
-}
-
-.card-link {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.click-more {
-  position: absolute;
-  bottom: 2vh; /* Toujours à la même distance du bord bas de la carte */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.poly-shard {
-  position: absolute;
-  bottom: 1.5vh;
-  right: 2vh;
-  width: 15px;
-  height: 15px;
-  background: var(--accent);
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  opacity: 0.6;
-}
-/* ==========================================================================
-   00. INTERFACE FIXE
+   INTERFACE FIXE
    ========================================================================== */
 .fixed-home-btn {
   position: fixed;

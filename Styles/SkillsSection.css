@@ -1,0 +1,71 @@
+.palette-skills {
+  --bg: #d2b48c; /* Solid Tan/Beige background */
+  --accent: #5d4037; /* Deep Brown for text/borders */
+  --text: #3e2723;
+  --panel-bg: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
+}
+
+/* Specific instruction text */
+.open-box-instruction {
+  font-family: "Courier New", monospace;
+  margin: 2vh 0;
+  font-weight: bold;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.box-interaction-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+}
+
+.clickable-box {
+  width: 250px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.clickable-box:hover {
+  transform: scale(1.1);
+}
+
+/* The hidden/visible panel logic */
+.skills-glass-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  background: var(--panel-bg);
+  backdrop-filter: blur(10px); /* Blur behind the glass */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 0 30px;
+  transition: all 0.6s ease-in-out;
+  z-index: 5;
+}
+
+/* Class added via JavaScript when opened */
+.skills-glass-panel.is-open {
+  max-height: 400px;
+  opacity: 1;
+  padding: 30px;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.skill-tag {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border-left: 3px solid var(--accent);
+}

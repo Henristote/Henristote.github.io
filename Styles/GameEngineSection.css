@@ -1,0 +1,140 @@
+#game_engine.screen {
+  font-family: "TieWing", sans-serif;
+  letter-spacing: 0.2rem;
+  background-image: linear-gradient(160deg, rgba(13, 2, 33, 0) 0%, rgba(19, 0, 26, 0) 50%, rgba(188, 188, 188, 0.5) 170%), url(../Pictures/Background/KH3_Final-World.jpg);
+  background-size: cover;
+}
+
+.poly-card img {
+  place-self: center;
+  border-radius: 12px;
+  width: 90%;
+}
+
+.cloud-title {
+  font-size: clamp(3rem, 9vh, 6rem);
+  transform: skewX(-10deg);
+  margin-bottom: 14vh;
+  text-shadow: #333 -3px 3px 1px;
+}
+
+#game_engine.screen .grid {
+  margin-top: 0vh;
+}
+
+.cloud-card {
+  position: relative;
+  display: grid;
+  /* On définit 3 lignes : Titre, Vidéo (qui prend la place), et Texte du bas */
+  grid-template-rows: auto 1fr auto;
+  gap: 1vh;
+  padding: 4vh;
+  height: 45vh;
+  width: 75vh;
+  overflow: visible;
+  z-index: 1;
+  background: transparent; /* Le nuage fera le fond */
+}
+
+.cloud-card:hover {
+  transform: scale(1.05);
+  text-shadow: 0px 2px 1px black;
+  .cloud-shape,
+  .cloud-shape::after,
+  .cloud-shape::before {
+    background-color: rgba(255, 255, 255, 0.75);
+    filter: blur(1.5vw);
+  }
+  h3,
+  & .click-more, /* Correction du point manquant ici */
+  & iframe,
+  & img {
+    opacity: 0.65 !important;
+    filter: saturate(0.8);
+  }
+}
+/* 1. ON SORT LE NUAGE DE LA GRILLE */
+.cloud-shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%); /* Centre le nuage dans la carte */
+  width: 45vw;
+  height: 35vh;
+  background-color: white;
+  border-radius: 100px;
+  z-index: 0; /* Derrière tout le monde */
+  filter: blur(1vw);
+  pointer-events: none; /* Les clics passent à travers */
+  transition: 0.5s ease-in-out;
+}
+
+/* On s'assure que les ronds du nuage ne bougent pas non plus */
+.cloud-shape::before,
+.cloud-shape::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  z-index: 0;
+  box-sizing: border-box;
+  filter: blur(1vw);
+  transition: 0.5s ease-in-out;
+}
+
+.cloud-shape::before {
+  width: 25vw;
+  height: 40vh;
+  border-radius: 50%;
+  background-color: white;
+  top: -60%;
+  left: 5%;
+  box-shadow: 0 0 1rem white;
+  z-index: -10;
+}
+
+.cloud-shape::after {
+  width: 25vw;
+  height: 45vh;
+  border-radius: 50%;
+  background-color: white;
+  top: -75%;
+  left: 40%;
+  box-shadow: 0 0 1rem white;
+}
+
+/* 2. ON FORCE LE TITRE ET LA VIDÉO SUR LEURS LIGNES */
+.cloud-card h3 {
+  font-size: 1.75rem;
+  grid-row: 1;
+  position: relative;
+  z-index: 2; /* Devant le nuage */
+  color: #000; /* Texte noir pour être lisible sur le nuage blanc */
+  text-shadow: none; /* On enlève l'ombre si on écrit en noir */
+  margin-top: 1vh;
+  transition: 0.5s ease-in-out;
+}
+
+.cloud-card iframe,
+.cloud-card img {
+  grid-row: 2;
+  place-self: center;
+  width: 85% !important;
+  aspect-ratio: 16/9;
+  z-index: 10;
+  border: 2px solid #ccc;
+  position: relative;
+  transition: 0.5s ease-in-out;
+}
+
+/* 3. LE TEXTE DU BAS */
+.cloud-card .click-more {
+  grid-row: 3;
+  position: relative;
+  z-index: 2;
+  color: #333;
+  font-size: 1.25rem;
+  margin-top: 2vh;
+  text-align: center;
+  text-shadow: none;
+  transition: 0.5s ease-in-out;
+}
