@@ -1,5 +1,5 @@
-import { ParticleNetwork } from "./Scripts/particles.js";
-import { BoxInteraction } from "./Scripts/boxInteraction.js";
+import { ParticleNetwork } from "./cripts/particles.js";
+import { BoxInteraction } from "./cripts/boxInteraction.js";
 
 // --- LOGIQUE SCROLL TIKTOK ---
 const container = document.getElementById("main-container");
