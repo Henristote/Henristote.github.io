@@ -1,18 +1,32 @@
 // --- SKILLS BOX LOGIC ---
-const skillBox = document.getElementById("skill-box");
-const skillsPanel = document.getElementById("skills-panel");
+export class BoxInteraction {
+  constructor(boxId, panelId, openImg, closedImg) {
+    this.box = document.getElementById(boxId);
+    this.panel = document.getElementById(panelId);
+    this.openImg = openImg;
+    this.closedImg = closedImg;
 
-if (skillBox) {
-  skillBox.addEventListener("click", () => {
-    // Check if current image is the closed one
-    const isClosed = skillBox.src.includes("Pictures/SectionContent/closedBox.webp");
+    if (this.box && this.panel) {
+      this.init();
+    }
+  }
+
+  init() {
+    this.box.addEventListener("click", () => this.toggleBox());
+  }
+
+  toggleBox() {
+    // Utilisation d'une vérification robuste du chemin d'image
+    const isClosed = this.box.src.includes(this.closedImg);
 
     if (isClosed) {
-      skillBox.src = "Pictures/SectionContent/openBox.webp";
-      skillsPanel.classList.add("is-open");
+      this.box.src = this.openImg;
+      this.panel.classList.add("is-open");
     } else {
-      skillBox.src = "Pictures/SectionContent/closedBox.webp";
-      skillsPanel.classList.remove("is-open");
+      this.box.src = this.closedImg;
+      this.panel.classList.remove("is-open");
     }
-  });
+  }
 }
+
+export default BoxInteraction;

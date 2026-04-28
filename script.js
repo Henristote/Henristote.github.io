@@ -1,5 +1,5 @@
-import { ParticleNetwork } from "./scripts/particles.js";
-// import "./Scripts/boxInteraction.js";
+import { ParticleNetwork } from "./Scripts/particles.js";
+import { BoxInteraction } from "./Scripts/boxInteraction.js";
 
 // --- LOGIQUE SCROLL TIKTOK ---
 const container = document.getElementById("main-container");
@@ -48,3 +48,5 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 new ParticleNetwork("home-particle-canvas");
+
+new BoxInteraction("skill-box", "skills-panel", "Pictures/SectionContent/openBox.webp", "Pictures/SectionContent/closedBox.webp");
