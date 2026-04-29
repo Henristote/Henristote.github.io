@@ -78,6 +78,12 @@ body {
   --text: #e0f7ff;
   --card: rgba(0, 217, 255, 0.05);
 }
+.palette-skills {
+  --bg: #d2b48c; /* Solid Tan/Beige background */
+  --accent: #5d4037; /* Deep Brown for text/borders */
+  --text: #3e2723;
+  --panel-bg: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
+}
 .palette-eng {
   --bg: #1a0f00;
   --accent: #ffb300;

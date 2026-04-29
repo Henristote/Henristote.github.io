@@ -12,7 +12,21 @@ export class BoxInteraction {
   }
 
   init() {
-    this.box.addEventListener("click", () => this.toggleBox());
+    this.box.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.toggleBox();
+    });
+
+    this.panel.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", () => {
+      if (this.panel.classList.contains("is-open")) {
+        this.box.src = this.closedImg;
+        this.panel.classList.remove("is-open");
+      }
+    });
   }
 
   toggleBox() {
