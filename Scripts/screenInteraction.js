@@ -7,6 +7,7 @@ export class ScreenInteraction {
     this.screens = document.querySelectorAll(screenClass);
     this.currentIdx = 0;
     this.isScrolling = false;
+    this.touchStartY = 0;
 
     if (this.container && this.screens.length > 0) {
       this.init();
@@ -19,8 +20,15 @@ export class ScreenInteraction {
       history.scrollRestoration = "manual";
     }
 
-    // Gestion de la molette
+    // Mouse Nav ---
     window.addEventListener("wheel", (e) => this.handleWheel(e), { passive: false });
+
+    // Keyboard Nav ---
+    document.addEventListener("keydown", (e) => this.handleKeyDown(e));
+
+    // Mobile Nav ---
+    window.addEventListener("touchstart", (e) => this.handleTouchStart(e), { passive: true });
+    window.addEventListener("touchend", (e) => this.handleTouchEnd(e));
 
     // Navigation via les liens d'ancrage
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -83,11 +91,60 @@ export class ScreenInteraction {
     }
   }
 
+  handleKeyDown(e) {
+    // Si on est déjà en train de scroller, on ignore pour éviter les bugs
+    if (this.isScrolling) return;
+
+    // Touche Flèche Bas (Descendre)
+    if (e.key === "ArrowDown") {
+      e.preventDefault(); // Empêche le navigateur de scroller nativement
+      if (this.currentIdx < this.screens.length - 1) {
+        this.move(this.currentIdx + 1);
+      }
+    }
+
+    // Touche Flèche Haut (Monter)
+    else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (this.currentIdx > 0) {
+        this.move(this.currentIdx - 1);
+      }
+    }
+  }
+
   handleAnchorClick(e, link) {
     e.preventDefault();
     const id = link.getAttribute("href").substring(1);
     const idx = Array.from(this.screens).findIndex((s) => s.id === id);
     if (idx !== -1) this.move(idx);
+  }
+
+  handleTouchStart(e) {
+    // On enregistre la position Y du premier doigt qui touche l'écran
+    this.touchStartY = e.changedTouches[0].screenY;
+  }
+
+  handleTouchEnd(e) {
+    if (this.isScrolling) return;
+
+    // On récupère la position Y au moment où le doigt quitte l'écran
+    const touchEndY = e.changedTouches[0].screenY;
+
+    // On calcule la distance parcourue par le doigt
+    const deltaY = this.touchStartY - touchEndY;
+
+    // Seuil de déclenchement (en pixels) pour ignorer les petits effleurements accidentels
+    const touchThreshold = 50;
+
+    if (Math.abs(deltaY) > touchThreshold) {
+      if (deltaY > 0 && this.currentIdx < this.screens.length - 1) {
+        // Le doigt a glissé vers le haut -> on descend dans la page
+        this.move(this.currentIdx + 1);
+      } else if (deltaY < 0 && this.currentIdx > 0) {
+        // Le doigt a glissé vers le bas -> on monte dans la page
+        this.move(this.currentIdx - 1);
+      }
+    }
   }
 
   syncFromHash() {
