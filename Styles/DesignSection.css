@@ -1,3 +1,6 @@
+.palette-design {
+  --accent: #ffffff;
+}
 #design.screen {
   font-family: "AcidDaze", sans-serif;
   letter-spacing: 0.4rem;

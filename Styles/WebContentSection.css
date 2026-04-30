@@ -1,3 +1,10 @@
+.palette-webContent {
+  --bg: #0d0221;
+  --accent: #bbff00fa;
+  --text: #ff00ffcc;
+  --card: #301037e6;
+}
+
 #video.screen {
   font-family: "GrimsAcid", sans-serif;
   letter-spacing: 0.2rem;

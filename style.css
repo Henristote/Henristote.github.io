@@ -1,3 +1,4 @@
+@import url(./Styles/HomeSection.css);
 @import url(./Styles/AboutMeSection.css);
 @import url(./Styles/SkillsSection.css);
 @import url(./Styles/EngineeringSection.css);
@@ -61,55 +62,6 @@ body {
   background-color: #000;
   overflow: hidden;
   color: white;
-}
-
-/* ==========================================================================
-   COLOURS
-   ========================================================================== */
-.palette-home {
-  --bg: #050505;
-  --accent: #00ff00;
-  --text: #ffffff;
-  --card: rgba(0, 255, 0, 0.05);
-}
-.palette-exp {
-  --bg: #000b1a;
-  --accent: #00d9ff;
-  --text: #e0f7ff;
-  --card: rgba(0, 217, 255, 0.05);
-}
-.palette-skills {
-  --bg: #d2b48c; /* Solid Tan/Beige background */
-  --accent: #5d4037; /* Deep Brown for text/borders */
-  --text: #3e2723;
-  --panel-bg: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
-}
-.palette-eng {
-  --bg: #1a0f00;
-  --accent: #ffb300;
-  --text: #fff4e0;
-  --card: rgba(255, 179, 0, 0.05);
-}
-.palette-game {
-  --bg: #13001a;
-  --accent: #d000ff;
-  --text: #f8e0ff;
-  --card: rgba(208, 0, 255, 0.05);
-}
-.palette-sound {
-  --bg: #ff9700;
-  --accent: #ff3800;
-  --text: #ffcd92;
-  --card: #700900(48, 16, 55, 0.9);
-}
-.palette-design {
-  --accent: #ffffff;
-}
-.palette-video {
-  --bg: #0d0221;
-  --accent: #bbff00fa;
-  --text: #ff00ffcc;
-  --card: #301037e6;
 }
 
 /* ==========================================================================
@@ -188,49 +140,6 @@ body {
 .highlight {
   color: var(--accent);
   text-shadow: 0 0 10px var(--accent);
-}
-/* ==========================================================================
-   SECTION HOME
-   ========================================================================== */
-
-#home-particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to right, black 40%, transparent 60%);
-  mask-image: linear-gradient(to right, black 40%, transparent 60%);
-}
-
-.content-left {
-  position: relative;
-  z-index: 10;
-  width: 50vw;
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.photo-right {
-  flex: 1;
-  height: 100vh;
-  position: relative;
-}
-.photo-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.photo-right::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, var(--bg) 0%, transparent 15%);
-  z-index: 6;
 }
 /* ==========================================================================
    INTERFACE FIXE

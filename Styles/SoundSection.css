@@ -1,3 +1,10 @@
+.palette-sound {
+  --bg: #ff9700;
+  --accent: #ff3800;
+  --text: #ffcd92;
+  --card: #700900(48, 16, 55, 0.9);
+}
+
 #sound.screen {
   font-family: "GroovyVintage", sans-serif;
   letter-spacing: 0.2rem;

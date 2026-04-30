@@ -1,4 +1,10 @@
-/* Specific instruction text */
+.palette-skills {
+  --bg: #d2b48c; /* Solid Tan/Beige background */
+  --accent: #5d4037; /* Deep Brown for text/borders */
+  --text: #3e2723;
+  --panel-bg: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
+}
+
 .open-box-instruction {
   font-family: "Courier New", monospace;
   margin: 2vh 0;
