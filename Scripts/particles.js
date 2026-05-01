@@ -17,7 +17,11 @@ export class ParticleNetwork {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.particles = [];
-    for (let i = 0; i < 100; i++) {
+
+    const densityArea = 10000;
+    const particleCount = Math.floor((this.canvas.width * this.canvas.height) / densityArea);
+
+    for (let i = 0; i < particleCount; i++) {
       this.particles.push({
         x: Math.random() * this.canvas.width,
         y: Math.random() * this.canvas.height,
