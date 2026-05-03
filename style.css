@@ -116,11 +116,11 @@ body {
    ========================================================================== */
 .fixed-home-btn {
   position: fixed;
-  bottom: 3vh;
-  right: 3vw;
+  bottom: 8vh;
+  right: 2vw;
   z-index: 1000;
-  width: 50px;
-  height: 50px;
+  width: 7vh;
+  height: 7vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,4 +139,13 @@ body {
   width: 60%;
   height: 60%;
   margin-bottom: 5%;
+}
+
+@media (max-width: 800px) {
+  .fixed-home-btn {
+    position: fixed;
+    bottom: 4vh;
+    right: 5vw;
+    z-index: 1000;
+  }
 }
