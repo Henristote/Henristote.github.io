@@ -1,13 +1,13 @@
 .palette-eng {
   --bg: #1a0f00;
-  --accent: #ffb300;
+  --accent: rgb(162, 162, 162);
   --text: #fff4e0;
   --card: rgba(255, 179, 0, 0.05);
 }
 
 #engineering.screen {
   font-family: "IronForge", sans-serif;
-  background-image: linear-gradient(150deg, rgba(9, 157, 100, 0.3) 0%, rgba(106, 46, 5, 0.3) 50%, rgba(9, 157, 100, 0.3) 170%), url(../Pictures/Background/rusty-texture.jpg);
+  background-image: linear-gradient(150deg, rgba(9, 157, 100, 0.2) 0%, rgba(106, 46, 5, 0.25) 50%, rgba(9, 157, 100, 0.3) 170%), url(../Pictures/Background/rusty-texture.jpg);
   background-size: cover;
   letter-spacing: 0.1rem;
 }
@@ -15,6 +15,7 @@
 .rusty-title {
   font-size: clamp(4rem, 12vh, 8rem);
   transform: skewX(-10deg);
+  letter-spacing: 0.4rem;
   margin-bottom: 10vh;
 }
 
@@ -28,20 +29,20 @@
   /* Forme arrondie */
   border-radius: 7rem;
 
-  background: radial-gradient(circle, #ff9700 25%, #ff3800 90%, #700900 95%);
+  background: radial-gradient(circle, #5d7b8c 25%, #455b68 80%, #000000 120%);
   background-position: cover;
   transform: skew(1);
 
   /* Bordure argentée fine */
-  border: 0.2rem solid rgba(200, 200, 210);
+  border: 0.2rem solid var(--accent);
 
   /* Ombre portée pour donner du relief (effet plaque posée) */
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     inset 0 1px 1px rgba(255, 255, 255, 0.1); /* Reflet sur l'arête supérieure */
 
-  height: 50vh;
-  width: 80vh;
+  height: 100%;
+  width: 110%;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 1;
 }
@@ -101,4 +102,39 @@
   letter-spacing: 1px;
   z-index: 5;
   pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE: ENGINEERING SECTION (Mobiles < 800px)
+   ========================================================================== */
+@media (max-width: 800px) {
+  #engineering .grid {
+    grid-template-columns: 100%;
+    width: 100%;
+    place-items: center;
+    row-gap: 5vh;
+    margin: 5vh;
+  }
+
+  .rusty-title {
+    margin-bottom: 2vh;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .rusty-card {
+    width: 90%;
+    height: 80%;
+    border-radius: 4rem; /* Un peu moins rond pour gagner de l'espace d'affichage */
+    padding-bottom: none;
+  }
+
+  .rusty-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .rusty-card .click-more {
+    font-size: 1rem;
+    bottom: 1.5vh;
+  }
 }
