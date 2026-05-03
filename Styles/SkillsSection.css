@@ -8,6 +8,7 @@
 .open-box-instruction {
   font-family: "Courier New", monospace;
   margin: 2vh 0;
+  font-size: 3vh;
   font-weight: bold;
   color: var(--accent);
   text-transform: uppercase;
@@ -23,9 +24,9 @@
 
 .clickable-box {
   display: block;
-  width: 250px;
+  width: 20vw;
   height: auto;
-  margin: 0 auto;
+  margin: -5vh auto;
   cursor: pointer;
   position: relative;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -44,11 +45,12 @@
 .skills-glass-panel {
   position: relative;
   width: 80vw;
+  box-sizing: border-box;
+  margin-bottom: -5vh;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  margin-top: clamp(-150px, 30vh, 0px);
-  /* top: 10vh; */
+  transform: translate(0, -8vh);
   background: var(--panel-bg);
   backdrop-filter: blur(10px); /* Blur behind the glass */
   -webkit-backdrop-filter: blur(10px);
@@ -79,4 +81,42 @@
   border-radius: 8px;
   font-size: 0.9rem;
   border-left: 3px solid var(--accent);
+}
+
+/* ==========================================================================
+   RESPONSIVE: SKILLS SECTION (Mobiles < 800px)
+   ========================================================================== */
+@media (max-width: 800px) {
+  .open-box-instruction {
+    font-size: none;
+  }
+  /* On adapte la taille du panneau pour optimiser la place */
+  .skills-glass-panel {
+    width: 80vw;
+    margin-top: clamp(-100px, 20vh, 0px); /* Ajustement de la superposition sur le titre */
+  }
+
+  /* On donne plus de hauteur maximale car la liste va s'allonger sur une colonne */
+  .skills-glass-panel.is-open {
+    max-height: 75vh;
+    padding: 25px;
+  }
+
+  /* Passage de la grille de compétences à une seule colonne */
+  .skills-list {
+    grid-template-columns: 100%;
+    gap: 12px;
+  }
+
+  /* Adaptation du tag pour la nouvelle largeur */
+  .skill-tag {
+    font-size: 85%;
+    padding: 12px;
+    text-align: center; /* Plus esthétique sur une seule colonne */
+  }
+
+  /* Réduction de l'image de la boîte pour laisser respirer l'écran */
+  .clickable-box {
+    width: 48vw;
+  }
 }
