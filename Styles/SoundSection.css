@@ -107,3 +107,36 @@
   z-index: 5;
   pointer-events: none;
 }
+
+/* ==========================================================================
+   RESPONSIVE: SOUND SECTION (Mobiles < 800px)
+   ========================================================================== */
+@media (max-width: 800px) {
+  #sound .grid {
+    grid-template-columns: 100%;
+    width: 100%;
+    place-items: center;
+    row-gap: 5vh;
+  }
+
+  .seventy-title {
+    margin: 5vh;
+    font-size: 3.5rem;
+  }
+
+  .seventy-card {
+    width: 100%;
+    height: 75%;
+    border-radius: 4rem;
+    padding-bottom: 4vh;
+  }
+
+  .seventy-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .seventy-card .click-more {
+    font-size: 1rem;
+    margin-bottom: -1.5vh;
+  }
+}

@@ -30,7 +30,7 @@
   border-radius: 25px;
 
   /* Dégradé "Acier Brossé" : mélange de gris profonds et de reflets clairs */
-  background: linear-gradient(135deg, rgba(84, 87, 81, 0.626) -10%, rgba(49, 93, 103, 0.256) 50%, rgba(121, 97, 75, 0.56) 100%), url(../Pictures/Background/metallic-holographic.jpg);
+  background: linear-gradient(135deg, rgba(49, 51, 47, 0.626) -10%, rgba(27, 51, 56, 0.256) 50%, rgba(73, 59, 45, 0.56) 100%), url(../Pictures/Background/metallic-holographic.jpg);
   background-size: 200%;
   background-position: 15% 75%;
   transform: skew(1);
@@ -105,4 +105,38 @@
   letter-spacing: 0.2rem;
   z-index: 5;
   pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE: DESIGN SECTION (Mobiles < 800px)
+   ========================================================================== */
+@media (max-width: 800px) {
+  #design .grid {
+    grid-template-columns: 100%;
+    row-gap: 2vh;
+    width: 100%;
+    place-items: center; /* Centre les cartes dans la colonne */
+  }
+
+  .metal-title {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    font-size: 3rem; /* Réduction du titre pour gagner de la place */
+  }
+
+  .metal-card {
+    width: 90%;
+    height: 65%;
+    row-gap: 1vh;
+  }
+
+  .metal-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .metal-card .click-more {
+    font-size: 1rem;
+    width: 120%;
+    margin-bottom: -1.5vh;
+  }
 }
