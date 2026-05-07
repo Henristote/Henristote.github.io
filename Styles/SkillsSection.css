@@ -70,8 +70,9 @@
 
 .skills-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  justify-items: center;
 }
 
 .skill-tag {
@@ -83,10 +84,76 @@
   border-left: 3px solid var(--accent);
 }
 
+.skill-tag img {
+  width: 35px;
+  height: 35px;
+  color: #c61b1b;
+  filter: grayscale(0.5) brightness(1); /* Effet sobre par défaut */
+  transition: 0.3s ease;
+}
+
+/* --- Effet au survol --- */
+.skill-tag:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.skill-tag:hover img {
+  filter: grayscale(0) brightness(1.1); /* L'icône reprend ses couleurs */
+  transform: scale(1.1);
+}
+
+/* --- Tooltip (Info-bulle) --- */
+.skill-tag::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -35px;
+  background: var(--accent);
+  color: #000;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.3s ease;
+  pointer-events: none;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+.skill-tag:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ==========================================================================
    RESPONSIVE: SKILLS SECTION (Mobiles < 800px)
    ========================================================================== */
 @media (max-width: 800px) {
+  .skills-list {
+    /* 4 colonnes sur mobile */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .skill-tag {
+    width: 50px;
+    height: 50px;
+  }
+
+  .skill-tag img {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Sur mobile, on peut désactiver le tooltip pour éviter l'encombrement */
+  .skill-tag::after {
+    display: none;
+  }
+
   .open-box-instruction {
     font-size: none;
   }
@@ -100,19 +167,6 @@
   .skills-glass-panel.is-open {
     max-height: 75vh;
     padding: 25px;
-  }
-
-  /* Passage de la grille de compétences à une seule colonne */
-  .skills-list {
-    grid-template-columns: 100%;
-    gap: 12px;
-  }
-
-  /* Adaptation du tag pour la nouvelle largeur */
-  .skill-tag {
-    font-size: 85%;
-    padding: 12px;
-    text-align: center; /* Plus esthétique sur une seule colonne */
   }
 
   /* Réduction de l'image de la boîte pour laisser respirer l'écran */
