@@ -141,7 +141,9 @@ body {
 }
 
 .fixed-home-btn:hover {
+  transform: scale(0.9);
   background: var(--accent);
+  box-shadow: 0 0 3px var(--accent);
 }
 
 .fixed-home-btn.hidden {
@@ -225,6 +227,12 @@ body {
   cursor: pointer;
   transition: 0.4s;
   padding: 0;
+}
+
+.fab-toggle-btn:hover {
+  transform: scale(0.9);
+  background: var(--accent);
+  box-shadow: 0 0 3px var(--accent);
 }
 
 .fab-icon {

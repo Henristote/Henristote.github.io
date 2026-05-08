@@ -79,8 +79,8 @@ export class ScreenInteraction {
 
       // Adaptation de la couleur selon l'accent de l'écran actuel
       const accent = getComputedStyle(this.screens[idx]).getPropertyValue("--accent");
-      this.homeBtn.style.borderColor = accent;
-      this.homeBtn.style.color = accent;
+      this.homeBtn.style.setProperty("--accent", accent);
+      this.fabToggleBtn.style.setProperty("--accent", accent);
 
       if (this.fabBtn) {
         this.fabBtn.style.setProperty("--accent", accent);
