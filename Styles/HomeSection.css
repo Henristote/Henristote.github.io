@@ -19,6 +19,7 @@
 
 .content-left {
   position: relative;
+  left: 2.5vw;
   z-index: 10;
   width: 50vw;
   padding: 60px;
@@ -51,7 +52,7 @@
   column-gap: 5vw;
   row-gap: 5vh;
   margin-top: 30px;
-  width: 90%;
+  width: 80%;
 }
 
 .launch-btn {

@@ -140,6 +140,10 @@ body {
   transition: 0.4s;
 }
 
+.fixed-home-btn:hover {
+  background: var(--accent);
+}
+
 .fixed-home-btn.hidden {
   opacity: 0;
   pointer-events: none;
@@ -149,6 +153,84 @@ body {
   width: 60%;
   height: 60%;
   margin-bottom: 5%;
+}
+/* Le conteneur fixe qui maintient tout en place */
+.fixed-fab-wrapper {
+  position: fixed;
+  bottom: 8vh;
+  left: 2vw; /* À l'opposé du bouton Home */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* L'espacement entre le menu et le bouton principal */
+}
+
+/* Le menu caché par défaut */
+.fab-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(20px);
+  /* On réutilise ta variable de transition globale pour la fluidité */
+  transition: all 0.5s var(--bezier, ease);
+}
+
+/* L'état ouvert déclenché par le Javascript */
+.fixed-fab-wrapper.is-open .fab-menu {
+  overflow: visible;
+  opacity: 1;
+  max-height: 50vh; /* Une valeur suffisamment haute pour laisser la place aux icônes */
+  transform: translateY(0);
+}
+
+/* Le style des petites icônes du menu */
+.fab-item {
+  width: 6.5vh;
+  height: 6.5vh;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--accent); /* S'adapte à la couleur du thème actuel */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.fab-item img {
+  width: 60%;
+  height: 60%;
+}
+
+.fab-item:hover {
+  transform: scale(1.15);
+  background: var(--accent);
+  box-shadow: 0 0 3px var(--accent);
+}
+
+/* Le bouton principal reprenant ton design */
+.fab-toggle-btn {
+  width: 7vh;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s;
+  padding: 0;
+}
+
+.fab-icon {
+  width: 60%;
+  height: 60%;
+  transition: transform 0.4s var(--bezier, ease);
 }
 
 @media (max-width: 800px) {
