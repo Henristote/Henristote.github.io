@@ -30,6 +30,11 @@
   cursor: pointer;
   position: relative;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.6s ease-in-out;
+}
+
+.clickable-box.is-open {
+  width: 10vw;
 }
 
 .clickable-box:hover {
@@ -44,7 +49,7 @@
 /* The hidden/visible panel logic */
 .skills-glass-panel {
   position: relative;
-  width: 80vw;
+  width: 85vw;
   box-sizing: border-box;
   margin-bottom: -5vh;
   max-height: 0;
@@ -70,7 +75,7 @@
 
 .skills-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   gap: 25px;
   justify-items: center;
 }
@@ -78,17 +83,16 @@
 .skill-tag {
   background: rgba(0, 0, 0, 0.1);
   color: var(--text);
-  padding: 10px 15px;
   border-radius: 8px;
   font-size: 0.9rem;
   border-left: 3px solid var(--accent);
 }
 
 .skill-tag img {
-  width: 35px;
-  height: 35px;
-  color: #c61b1b;
-  filter: grayscale(0.5) brightness(1); /* Effet sobre par défaut */
+  width: 4vw;
+  height: auto;
+  margin: 15px;
+  filter: grayscale(0.6); /* Effet sobre par défaut */
   transition: 0.3s ease;
 }
 
@@ -101,7 +105,7 @@
 }
 
 .skill-tag:hover img {
-  filter: grayscale(0) brightness(1.1); /* L'icône reprend ses couleurs */
+  filter: grayscale(0); /* L'icône reprend ses couleurs */
   transform: scale(1.1);
 }
 
@@ -109,15 +113,16 @@
 .skill-tag::after {
   content: attr(data-label);
   position: absolute;
-  bottom: -35px;
-  background: var(--accent);
+  bottom: -15%;
+  right: -10%;
+  background: var(--bg);
   color: #000;
   padding: 4px 8px;
   font-size: 0.75rem;
   border-radius: 4px;
   white-space: nowrap;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translate(50%);
   transition: 0.3s ease;
   pointer-events: none;
   font-family: "Courier New", monospace;
@@ -135,28 +140,26 @@
 @media (max-width: 800px) {
   .skills-list {
     /* 4 colonnes sur mobile */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-  }
-
-  .skill-tag {
-    width: 50px;
-    height: 50px;
+    column-gap: 4vw;
+    row-gap: 6vw;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .skill-tag img {
-    width: 25px;
-    height: 25px;
+    width: 8vw;
+    height: auto;
   }
 
   /* Sur mobile, on peut désactiver le tooltip pour éviter l'encombrement */
   .skill-tag::after {
-    display: none;
+    content: attr(data-label);
+    position: absolute;
   }
 
   .open-box-instruction {
     font-size: none;
   }
+
   /* On adapte la taille du panneau pour optimiser la place */
   .skills-glass-panel {
     width: 80vw;
@@ -165,12 +168,12 @@
 
   /* On donne plus de hauteur maximale car la liste va s'allonger sur une colonne */
   .skills-glass-panel.is-open {
-    max-height: 75vh;
-    padding: 25px;
+    max-height: 80vh;
   }
 
   /* Réduction de l'image de la boîte pour laisser respirer l'écran */
   .clickable-box {
+    padding: 5vw;
     width: 48vw;
   }
 }

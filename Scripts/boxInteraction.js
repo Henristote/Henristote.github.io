@@ -24,6 +24,7 @@ export class BoxInteraction {
     document.addEventListener("click", () => {
       if (this.panel.classList.contains("is-open")) {
         this.box.src = this.closedImg;
+        this.box.classList.remove("is-open");
         this.panel.classList.remove("is-open");
       }
     });
@@ -35,9 +36,11 @@ export class BoxInteraction {
 
     if (isClosed) {
       this.box.src = this.openImg;
+      this.box.classList.add("is-open");
       this.panel.classList.add("is-open");
     } else {
       this.box.src = this.closedImg;
+      this.box.classList.remove("is-open");
       this.panel.classList.remove("is-open");
     }
   }
