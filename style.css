@@ -240,4 +240,16 @@ body {
     right: 5vw;
     z-index: 1000;
   }
+
+  .fixed-fab-wrapper {
+    position: fixed;
+    bottom: 4vh;
+    left: 5vw; /* À l'opposé du bouton Home */
+    z-index: 1000;
+    gap: 10px; /* L'espacement entre le menu et le bouton principal */
+  }
+
+  .fab-menu {
+    gap: 5px;
+  }
 }
