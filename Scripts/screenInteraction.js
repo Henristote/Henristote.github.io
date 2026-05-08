@@ -1,9 +1,11 @@
 // Scripts/screenScroller.js
 
 export class ScreenInteraction {
-  constructor(containerId, homeBtnId, screenClass) {
+  constructor(containerId, homeBtnId, fabBtnId, fabToggleBtnId, screenClass) {
     this.container = document.getElementById(containerId);
     this.homeBtn = document.getElementById(homeBtnId);
+    this.fabBtn = document.querySelector(fabBtnId);
+    this.fabToggleBtn = document.getElementById(fabToggleBtnId);
     this.screens = document.querySelectorAll(screenClass);
     this.currentIdx = 0;
     this.isScrolling = false;
@@ -34,6 +36,8 @@ export class ScreenInteraction {
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => this.handleAnchorClick(e, link));
     });
+
+    this.touchFab();
 
     // Synchronisation initiale au chargement
     this.syncFromHash();
@@ -77,6 +81,25 @@ export class ScreenInteraction {
       const accent = getComputedStyle(this.screens[idx]).getPropertyValue("--accent");
       this.homeBtn.style.borderColor = accent;
       this.homeBtn.style.color = accent;
+
+      if (this.fabBtn) {
+        this.fabBtn.style.setProperty("--accent", accent);
+      }
+    }
+  }
+
+  touchFab() {
+    if (this.fabToggleBtn && this.fabBtn) {
+      const fabIcon = this.fabToggleBtn.querySelector(".fab-icon");
+      this.fabToggleBtn.addEventListener("click", () => {
+        this.fabBtn.classList.toggle("is-open");
+
+        if (this.fabBtn.classList.contains("is-open")) {
+          fabIcon.src = "Icon/close.svg"; // Nom de ton icône de fermeture
+        } else {
+          fabIcon.src = "Icon/contacts.svg"; // L'icône de base
+        }
+      });
     }
   }
 
