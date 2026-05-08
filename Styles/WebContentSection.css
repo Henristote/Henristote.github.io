@@ -86,25 +86,28 @@
 @media (max-width: 800px) {
   #video .grid {
     grid-template-columns: 100%;
-    width: 75%;
+    place-items: center;
+    width: 100%;
     row-gap: 2vh;
   }
 
   .acid-title {
-    margin-top: 4vh;
-    font-size: 2.5rem;
+    margin-top: -10vh;
+    margin-bottom: 0vh;
+    font-size: 2rem;
   }
 
   .poly-card {
-    width: 100%;
+    width: 70%;
     height: auto; /* La carte s'adapte au contenu sur mobile */
     aspect-ratio: 1 / 1.1; /* Maintient une forme cohérente */
     padding: 2vh;
     aspect-ratio: 1.1/1;
+    left: 5vw;
   }
 
   .poly-card h3 {
-    margin: -2% -2%;
+    margin: -2.5vh 0;
     font-size: 1.2rem;
   }
 
@@ -114,7 +117,6 @@
 
   .poly-card .click-more {
     font-size: 0.8rem;
-    margin-top: 2vh;
-    height: fit-content;
+    margin-top: 1vh;
   }
 }
