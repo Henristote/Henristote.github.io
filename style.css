@@ -116,9 +116,9 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 0vh;
-  margin-right: 5vw;
+  margin-right: 8vw;
   gap: 10vw;
-  width: 90%;
+  width: 80%;
 }
 
 /* ==========================================================================
