@@ -17,6 +17,7 @@
   flex: 0 0 40vw; /* Takes 40% of the viewport width */
   height: 100%;
   position: relative;
+  transform: rotateY(180deg);
   overflow: hidden;
 }
 
@@ -31,7 +32,7 @@
 .visual-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, transparent 80%, var(--bg) 100%);
+  background: linear-gradient(to left, transparent 80%, var(--bg) 100%);
   z-index: 2;
 }
 
