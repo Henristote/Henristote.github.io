@@ -97,17 +97,15 @@
 }
 
 /* --- Effet au survol --- */
-.skill-tag:hover,
-.skill-tag:focus {
+.skill-tag:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: var(--accent);
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.skill-tag:hover,
-.skill-tag:focus img {
-  filter: grayscale(0); /* L'icône reprend ses couleurs */
+.skill-tag:hover img {
+  filter: grayscale(0) brightness(1.1); /* L'icône reprend ses couleurs */
   transform: scale(1.1);
 }
 
@@ -131,8 +129,7 @@
   font-weight: bold;
 }
 
-.skill-tag:hover::after,
-.skill-tag:focus::after {
+.skill-tag:hover::after {
   opacity: 1;
   transform: translateY(0);
 }
