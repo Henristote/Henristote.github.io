@@ -115,7 +115,7 @@
     box-sizing: border-box; /* Crucial pour ne pas dépasser les 100vw */
     z-index: 10;
     justify-content: flex-end; /* On pousse le texte vers le bas, là où c'est le plus sombre */
-    padding-bottom: 15vh; /* On laisse de la place en bas pour respirer */
+    padding-bottom: 10vh; /* On laisse de la place en bas pour respirer */
   }
 
   /* 4. Ajustements typographiques pour mobile */
@@ -125,8 +125,8 @@
   }
 
   .bio-prose {
-    font-size: 0.8rem; /* Taille de police légèrement réduite */
-    line-height: 1.2rem; /* Optionnel, mais souvent plus propre sur un bloc de texte mobile */
+    font-size: 0.7rem; /* Taille de police légèrement réduite */
+    line-height: 1rem; /* Optionnel, mais souvent plus propre sur un bloc de texte mobile */
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
   }
 }
